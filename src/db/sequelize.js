@@ -25,8 +25,8 @@ sequelize
 const User = UserModel(sequelize, DataTypes);
 const Article = ArticleModel(sequelize, DataTypes);
 
-// User.hasMany(Article, { foreignKey: "userId" });
-// Article.belongsTo(User);
+Article.belongsTo(User, { foreignKey: "userId" });
+User.hasMany(Article, { foreignKey: "userId" });
 
 const initDb = () => {
   return sequelize.sync({ force: true }).then(() => {
