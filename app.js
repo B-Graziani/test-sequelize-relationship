@@ -7,6 +7,8 @@ const port = 3000;
 
 app.use(bodyParser.json());
 
+sequelize.initDb();
+
 app.get("/", (req, res) => {
   res.json("test home");
 });

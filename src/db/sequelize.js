@@ -1,4 +1,6 @@
 const { Sequelize, DataTypes } = require("sequelize");
+const UserModel = require("../models/user");
+const ArticleModel = require("../models/article");
 
 let sequelize;
 
@@ -19,3 +21,21 @@ sequelize
   .catch((error) => {
     console.log(error);
   });
+
+const User = UserModel(sequelize, DataTypes);
+const Article = ArticleModel(sequelize, DataTypes);
+
+// User.hasMany(Article, { foreignKey: "userId" });
+// Article.belongsTo(User);
+
+const initDb = () => {
+  return sequelize.sync({ force: true }).then(() => {
+    console.log("DB initialized");
+  });
+};
+
+module.exports = {
+  initDb,
+  User,
+  Article,
+};
