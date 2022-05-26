@@ -17,6 +17,7 @@ app.get("/", (req, res) => {
 
 require("./src/routes/userRoutes/createUser")(app);
 require("./src/routes/articleRoutes/createArticle")(app);
+require("./src/routes/articleRoutes/showArticle")(app);
 
 app.listen(port, () => {
   console.log(`je fonctionne sur le port : ${port}`);

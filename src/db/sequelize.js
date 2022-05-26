@@ -1,6 +1,8 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const UserModel = require("../models/user");
 const ArticleModel = require("../models/article");
+const CountryModel = require("../models/country");
+const CapitalModel = require("../models/capital");
 
 let sequelize;
 
@@ -24,9 +26,11 @@ sequelize
 
 const User = UserModel(sequelize, DataTypes);
 const Article = ArticleModel(sequelize, DataTypes);
+const Country = CountryModel(sequelize, DataTypes);
+const Capital = CapitalModel(sequelize, DataTypes);
 
-Article.belongsTo(User, { foreignKey: "userId" });
-User.hasMany(Article, { foreignKey: "userId" });
+// User.hasOne(Article);
+// Article.belongsTo(User);
 
 const initDb = () => {
   return sequelize.sync({ force: true }).then(() => {
@@ -38,4 +42,6 @@ module.exports = {
   initDb,
   User,
   Article,
+  Country,
+  Capital,
 };

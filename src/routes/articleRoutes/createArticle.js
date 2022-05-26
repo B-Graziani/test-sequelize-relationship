@@ -3,12 +3,13 @@ const { User } = require("../../db/sequelize");
 
 module.exports = (app) => {
   app.post("/api/article", (req, res) => {
-    let userId;
+    // let userId;
     Article.create(req.body)
       .then((article) => {
         const message = "ca fonctionne !";
         // console.log(article.dataValues.userId);
-        userId = article.dataValues.userId;
+        // userId = article.dataValues.UserId;
+
         res.json({ message, data: article });
       })
       // .then(() => {
