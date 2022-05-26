@@ -32,9 +32,36 @@ const Capital = CapitalModel(sequelize, DataTypes);
 // User.hasOne(Article);
 // Article.belongsTo(User);
 
+Country.hasOne(Capital);
+
+let country, capital;
+
 const initDb = () => {
   return sequelize.sync({ force: true }).then(() => {
     console.log("DB initialized");
+    console.log("============ICI=============");
+    Country.bulkCreate([
+      {
+        countryName: "Spain",
+      },
+      {
+        countryName: "France",
+      },
+      {
+        countryName: "England",
+      },
+    ]),
+      Capital.bulkCreate([
+        {
+          capitalName: "Paris",
+        },
+        {
+          capitalName: "Madrid",
+        },
+        {
+          capitalName: "London",
+        },
+      ]);
   });
 };
 
